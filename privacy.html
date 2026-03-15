@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy — Remember</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #e8e8f0; padding: 40px 20px; }
+    .container { max-width: 720px; margin: 0 auto; }
+    .back { display: inline-flex; align-items: center; gap: 6px; color: #818cf8; text-decoration: none; font-size: 0.9rem; margin-bottom: 32px; }
+    .back:hover { opacity: 0.7; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; background: #1e1b4b; border: 1px solid #3730a3; border-radius: 50px; padding: 6px 16px; font-size: 0.8rem; color: #a5b4fc; margin-bottom: 24px; }
+    h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+    .subtitle { color: #64748b; font-size: 0.95rem; margin-bottom: 40px; }
+    .summary-box { background: #0f172a; border: 1px solid #1e293b; border-radius: 16px; padding: 24px; margin-bottom: 32px; text-align: center; }
+    .summary-box .icon { font-size: 2rem; margin-bottom: 12px; }
+    .summary-box h2 { font-size: 1.1rem; margin-bottom: 8px; }
+    .summary-box p { color: #64748b; font-size: 0.9rem; line-height: 1.6; }
+    .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 16px; padding: 24px; margin-bottom: 16px; }
+    .card h3 { color: #a5b4fc; font-size: 0.95rem; font-weight: 600; margin-bottom: 12px; }
+    .card p, .card ul { color: #94a3b8; font-size: 0.9rem; line-height: 1.7; }
+    .card ul { padding-left: 18px; }
+    .card ul li { margin-bottom: 4px; }
+    .divider { border: none; border-top: 1px solid #1e293b; margin: 16px 0; }
+    .effective { color: #475569; font-size: 0.8rem; text-align: center; margin-top: 32px; padding-bottom: 40px; }
+    a { color: #818cf8; }
+    footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid #1e293b; text-align: center; font-size: 0.8rem; color: #475569; }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #94a3b8; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back">← Back to Remember</a>
+
+    <div class="badge">🛡️ Privacy Policy</div>
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">Effective Date: March 14, 2026</p>
+
+    <div class="summary-box">
+      <div class="icon">🔒</div>
+      <h2>Your Data, Your Device</h2>
+      <p>Remember stores everything you create on your device and optionally in your own iCloud account. We do not collect, sell, or share your personal data. All AI features run entirely on-device.</p>
+    </div>
+
+    <div class="card">
+      <h3>Information We Collect</h3>
+      <p>Everything you create in the app is stored locally on your device. This includes:</p>
+      <ul>
+        <li>Reminders: Text content, optional URLs, and optional notes</li>
+        <li>Habits: Name, icon, notes, optional URLs, completion records, and streak history</li>
+        <li>Goals: Name, notes, optional URLs, and success criteria text</li>
+        <li>Challenges: Name, notes, optional URLs, expected outcome text, and linked habit records</li>
+        <li>Actions: Action items and categories including title, notes, priority, and optional URLs</li>
+        <li>Reflections: Journal entries linked to your reminders</li>
+        <li>Tags: Names and icons used to organize reminders</li>
+        <li>Preferences: Theme, font, notification times, breathing exercise settings, and other app settings</li>
+        <li>Weekly Intentions: Short notes written on the Weekly Review summary page, stored locally</li>
+        <li>Onboarding state: Whether you have completed onboarding and dismissed tip banners</li>
+        <li>Deletion records: When you delete an item, its ID is retained locally for up to 30 days to ensure the deletion propagates correctly during iCloud sync, then automatically purged</li>
+      </ul>
+      <hr class="divider"/>
+      <h3>Data We Do NOT Collect</h3>
+      <p>We do not collect:</p>
+      <ul>
+        <li>Your name, email address, or any other contact information</li>
+        <li>Location data</li>
+        <li>Usage analytics, behavioral tracking, or crash reports sent to us</li>
+        <li>Advertising identifiers</li>
+        <li>Device identifiers for tracking or profiling purposes</li>
+        <li>Any data via third-party analytics or advertising SDKs (the app has zero external dependencies)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Local Storage</h3>
+      <p>All your content — reminders, habits, goals, challenges, actions, reflections, and preferences — is stored locally on your device using Apple's SwiftData framework. You have complete ownership and control.</p>
+      <hr class="divider"/>
+      <h3>iCloud Sync (Optional)</h3>
+      <p>If you have iCloud enabled in iOS Settings, your data may sync across your Apple devices via Apple's CloudKit service. This sync is:</p>
+      <ul>
+        <li>Managed entirely by Apple, not by us</li>
+        <li>Encrypted in transit and at rest using Apple's encryption</li>
+        <li>Subject to <a href="https://apple.com/privacy">Apple's Privacy Policy</a></li>
+        <li>Fully controllable — you can disable it in iOS Settings › [Your Name] › iCloud</li>
+      </ul>
+      <p style="margin-top:10px;">We do not have access to your iCloud data at any time.</p>
+      <hr class="divider"/>
+      <h3>App Group Container</h3>
+      <p>A small amount of data (cached habit summaries, challenge info, and the daily reminder) is stored in a shared App Group container on your device. This is how the main app communicates with home screen widgets and the Share Extension — all of which run on your device only.</p>
+    </div>
+
+    <div class="card">
+      <h3>On-Device AI Processing</h3>
+      <p>Remember Pro includes AI-powered features such as reminder polishing, reflection prompts, habit tier suggestions, challenge outcome refinement, goal criteria generation, and weekly insight narratives.</p>
+      <p style="margin-top:10px;">All AI processing uses Apple's FoundationModels framework (Apple Intelligence), which runs entirely on your device:</p>
+      <ul>
+        <li>No content you enter is sent to any external server for AI processing</li>
+        <li>No network connection is used for AI features</li>
+        <li>Processing happens locally using the on-device language model provided by Apple</li>
+        <li>Sessions are short-lived — created per request and discarded immediately after</li>
+      </ul>
+      <p style="margin-top:10px;">AI features are only available when Apple Intelligence is supported and available on your device and language.</p>
+    </div>
+
+    <div class="card">
+      <h3>Share Extension and Network Activity</h3>
+      <p>The Share Extension lets you save URLs and text from other apps into Remember. When you share a URL, two network contacts may occur — both user-initiated and for display purposes only:</p>
+      <ul>
+        <li><strong>Direct URL Fetch:</strong> Your device makes a direct HTTP request to the shared URL to retrieve the page title, description, and metadata. This request goes from your device to the website you are sharing — not through our servers.</li>
+        <li><strong>Favicon Fallback:</strong> If a favicon cannot be found in the page's HTML, the app may request one from Google's Favicon Service, which discloses the domain name of the shared URL to Google. This is a best-effort fallback used only for display.</li>
+      </ul>
+      <p style="margin-top:10px;">These are the only network contacts the app makes related to your content, and they only occur when you actively share a URL via the extension.</p>
+    </div>
+
+    <div class="card">
+      <h3>Local Notifications</h3>
+      <p>Remember schedules notifications entirely on your device using Apple's UserNotifications framework. No notification data is sent to our servers. All scheduling and delivery is handled by iOS on your device.</p>
+    </div>
+
+    <div class="card">
+      <h3>Remember Pro Purchase</h3>
+      <p>All payments are processed by Apple through the App Store. We never see or store your payment details. Purchase history and receipts are managed by Apple and subject to Apple's Privacy Policy.</p>
+    </div>
+
+    <div class="card">
+      <h3>Data Sharing</h3>
+      <p>We do not sell, rent, or share your personal data with third parties. The only external contacts that may occur are:</p>
+      <ul>
+        <li>Apple (iCloud/CloudKit): Your data syncs between your own devices via Apple's servers if iCloud is enabled</li>
+        <li>Websites you share: Direct fetch of page metadata when you use the Share Extension</li>
+        <li>Google Favicon Service: Domain-level favicon lookup when using the Share Extension (conditional, display-only)</li>
+        <li>Apple (StoreKit): Purchase entitlement verification for Remember Pro</li>
+        <li>Your email provider: When you voluntarily send a feedback email</li>
+      </ul>
+      <p style="margin-top:10px;">None of these involve us receiving your personal content.</p>
+    </div>
+
+    <div class="card">
+      <h3>Your Rights</h3>
+      <p>You have complete control over your data:</p>
+      <ul>
+        <li><strong>View:</strong> All your data is visible within the app at all times</li>
+        <li><strong>Edit:</strong> Modify or correct any content you've created</li>
+        <li><strong>Delete:</strong> Remove individual items or use "Reset App" in Settings to erase all data</li>
+        <li><strong>Disable iCloud Sync:</strong> Turn off in iOS Settings › [Your Name] › iCloud › Remember</li>
+        <li><strong>Disable Notifications:</strong> Manage or revoke in iOS Settings › Notifications › Remember</li>
+      </ul>
+      <hr class="divider"/>
+      <h3>Contact</h3>
+      <p>If you have questions about this Privacy Policy or your data, contact us at:<br/><a href="mailto:ashish.nagar651@gmail.com">ashish.nagar651@gmail.com</a></p>
+    </div>
+
+    <p class="effective">Effective Date: March 14, 2026</p>
+
+    <footer>
+      <p><a href="index.html">Remember</a> · <a href="support.html">Support</a> · <a href="privacy.html">Privacy Policy</a></p>
+      <p style="margin-top:8px;">© 2026 Ashish Nagar</p>
+    </footer>
+  </div>
+</body>
+</html>
