@@ -4,257 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Remember — Your Daily Reminder App</title>
-  
-  <!-- Modern Fonts from Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-  
   <style>
-    :root {
-      --bg-dark: #06060c;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --accent-1: #c084fc;
-      --accent-2: #818cf8;
-      --accent-3: #ec4899;
-      --glass-bg: rgba(255, 255, 255, 0.03);
-      --glass-border: rgba(255, 255, 255, 0.08);
-    }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background-color: var(--bg-dark);
-      background-image: 
-        radial-gradient(circle at 15% 50%, rgba(192, 132, 252, 0.12), transparent 40%),
-        radial-gradient(circle at 85% 30%, rgba(129, 140, 248, 0.12), transparent 40%);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* Ambient animated background blobs */
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      z-index: -1;
-      opacity: 0.6;
-      animation: float 20s infinite ease-in-out alternate;
-    }
-    .blob-1 { top: 0%; left: 10%; width: 400px; height: 400px; background: rgba(236, 72, 153, 0.15); animation-delay: -2s; }
-    .blob-2 { bottom: -10%; right: 5%; width: 500px; height: 500px; background: rgba(129, 140, 248, 0.15); }
-
-    @keyframes float {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(-30px, 40px) scale(1.1); }
-    }
-
-    /* Main Frosted Glass Card */
-    .hero {
-      text-align: center;
-      max-width: 640px;
-      padding: 50px 40px;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 32px;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
-      position: relative;
-      z-index: 1;
-      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* App Icon Styling */
-    .app-icon {
-      width: 140px;
-      height: 140px;
-      border-radius: 32px;
-      margin: 0 auto 32px;
-      position: relative;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,255,255,0.2);
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      background: #111;
-    }
-    
-    .app-icon::before {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      border-radius: 34px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
-      z-index: -1;
-    }
-
-    .app-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 32px;
-      display: block;
-    }
-
-    .app-icon:hover { transform: scale(1.05) translateY(-5px); }
-
-    /* Typography */
-    h1 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, #fff 0%, #cbd5e1 50%, #94a3b8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    p {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 36px;
-      font-weight: 400;
-      max-width: 500px;
-      margin-inline: auto;
-    }
-
-    /* Buttons */
-    .links {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    a {
-      padding: 14px 28px;
-      border-radius: 100px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .primary {
-      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-      color: white;
-      box-shadow: 0 10px 25px rgba(129, 140, 248, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .primary::after {
-      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
-      opacity: 0; transition: opacity 0.3s ease; z-index: 1;
-    }
-    .primary span, .primary svg { position: relative; z-index: 2; }
-
-    .primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 35px rgba(129, 140, 248, 0.4);
-    }
-    .primary:hover::after { opacity: 1; }
-
-    .secondary {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--glass-border);
-      color: var(--text-main);
-    }
-
-    .secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.15);
-      transform: translateY(-2px);
-    }
-
-    /* Footer */
-    .footer {
-      margin-top: 48px;
-      font-size: 0.9rem;
-      color: #475569;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-      opacity: 0;
-      animation: fadeUp 1s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    .footer a {
-      padding: 0;
-      background: none;
-      border: none;
-      color: #64748b;
-      font-size: 0.9rem;
-      font-weight: 500;
-      display: inline;
-    }
-
-    .footer a:hover { color: #cbd5e1; transform: none; box-shadow: none; }
-
-    /* Mobile Responsiveness */
-    @media (max-width: 600px) {
-      h1 { font-size: 2.75rem; }
-      .hero { padding: 40px 24px; border-radius: 28px; }
-      .app-icon { width: 120px; height: 120px; }
-      .links { flex-direction: column; width: 100%; }
-      .links a { width: 100%; justify-content: center; }
-      .footer { flex-direction: column; gap: 8px; }
-    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #e8e8f0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; }
+    .hero { text-align: center; max-width: 600px; }
+    .app-icon { width: 180px; height: 180px; border-radius: 40px; margin: 0 auto 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    .app-icon img { width: 100%; height: 100%; object-fit: cover; }
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 12px; background: linear-gradient(135deg, #c084fc, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    p { font-size: 1.1rem; color: #94a3b8; line-height: 1.6; margin-bottom: 32px; }
+    .links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    a { padding: 12px 28px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: opacity 0.2s; }
+    a:hover { opacity: 0.8; }
+    .primary { background: linear-gradient(135deg, #6e4cf5, #b06cf5); color: white; }
+    .secondary { border: 1px solid #334155; color: #94a3b8; }
+    .footer { margin-top: 48px; font-size: 0.8rem; color: #475569; }
   </style>
 </head>
 <body>
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-
   <div class="hero">
-    <div class="app-icon">
-      <img src="icon.png" alt="Remember app icon"/>
-    </div>
-    
+    <div class="app-icon"><img src="icon.png" alt="Remember app icon"/></div>
     <h1>Remember</h1>
     <p>One meaningful reminder a day. Track habits, set goals, run challenges — all on your device with zero data collection.</p>
-    
     <div class="links">
-      <a href="#" class="primary">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16.636 8.244C16.666 5.485 18.893 4.02 18.996 3.962C17.653 2.012 15.54 1.701 14.869 1.667C13.117 1.489 11.397 2.684 10.493 2.684C9.59 2.684 8.169 1.696 6.703 1.725C4.803 1.753 3.036 2.821 2.053 4.513C0.051 7.963 1.547 13.046 3.504 15.846C4.467 17.214 5.598 18.756 7.087 18.698C8.528 18.642 9.072 17.779 10.772 17.779C12.472 17.779 12.967 18.698 14.475 18.67C16.032 18.642 17.000 17.273 17.946 15.875C19.049 14.249 19.508 12.674 19.529 12.586C19.493 12.569 16.602 11.483 16.636 8.244Z"/>
-          <path d="M13.297 5.626C14.092 4.666 14.629 3.328 14.483 1.99C13.344 2.036 11.908 2.748 11.083 3.708C10.344 4.556 9.71 5.919 9.879 7.234C11.149 7.332 12.503 6.586 13.297 5.626Z"/>
-        </svg>
-        <span>Download on the App Store</span>
-      </a>
+      <a href="#" class="primary">Download on the App Store</a>
       <a href="support.html" class="secondary">Support</a>
       <a href="privacy.html" class="secondary">Privacy Policy</a>
     </div>
   </div>
-  
   <div class="footer">
-    <span>© 2026 Ashish Nagar</span>
-    <span>·</span>
-    <a href="privacy.html">Privacy Policy</a>
-    <span>·</span>
-    <a href="support.html">Support</a>
+    <p>© 2026 Ashish Nagar · <a href="privacy.html" style="color:#475569;">Privacy Policy</a> · <a href="support.html" style="color:#475569;">Support</a></p>
   </div>
 </body>
 </html>
